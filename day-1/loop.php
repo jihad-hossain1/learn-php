@@ -1,3 +1,4 @@
+<?php 
 $fruits = ["apple", "banana", "orange"];
 
 foreach  ($fruits as $fruit){
@@ -7,3 +8,6 @@ foreach  ($fruits as $fruit){
 for ($i = 0; $i < count($fruits); $i++){
     echo $fruits[$i]. "<br>"; 
 }
+
+
+?>
