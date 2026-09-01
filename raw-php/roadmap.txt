@@ -1,0 +1,19 @@
+Module 1: PHP Fundamentals
+    ↓
+Module 2: Functions & Arrays
+    ↓
+Module 3: Object-Oriented Programming
+    ↓
+Module 4: Modern PHP Features
+    ↓
+Module 5: Composer & Autoloading
+    ↓
+Module 6: Database & PDO
+    ↓
+Module 7: MVC Architecture
+    ↓
+Module 8: Security
+    ↓
+Module 9: Build Projects
+    ↓
+Module 10: Laravel
