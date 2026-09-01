@@ -104,3 +104,65 @@ function processPayment(PaymentMethod $payment): void
 
 processPayment(new CreditCardPayment());
 processPayment(new PaypalPayment());
+
+
+echo "------TODO------" . PHP_EOL;
+
+
+class TodoList 
+{
+    private array $tasks = [];
+
+    public function list(): array 
+    {
+        $this->tasks;
+    }
+}
+
+
+class TodoRepository 
+{
+    private array $tasks = [];
+
+    public function add(array $task): void 
+    {
+        $this->tasks[] = $task;
+    }
+
+    public function all(): array 
+    {
+        return $this->tasks;
+    }
+
+}
+
+class TodoService 
+{
+    public function __construct(
+        private TodoRepository $repository
+    ){
+
+    }
+
+    public function addTask(string $title): void 
+    {
+        $task = [
+            'title'=>$title,
+            'completed' => false,
+        ];
+
+        $this->repository->add($task);
+    }
+
+}
+
+$t_list = new TodoList();
+
+$repository = new TodoRepository();
+
+$service = new TodoService($repository);
+$service->addTask('Learn Laravel');
+
+
+
+print_r($t_list->list());
