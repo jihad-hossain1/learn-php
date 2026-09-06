@@ -3,7 +3,7 @@
 
 
 
-function numbers(): Generator 
+function numbers(): Generator
 {
     echo "Start\n";
 
@@ -18,7 +18,7 @@ function numbers(): Generator
     yield 3;
 }
 
-foreach(numbers() as $number){
+foreach (numbers() as $number) {
     echo "Number: {$number}\n";
 }
 
@@ -26,11 +26,11 @@ echo "======================\n";
 
 
 
-function getProducts(): Generator 
+function getProducts(): Generator
 {
     $categories = ['Electronics', 'Clothing', 'Books', 'Food'];
-    
-    for($i = 1; $i <= 10; $i++){
+
+    for ($i = 1; $i <= 100000; $i++) {
         yield [
             'id' => $i,
             'name' => "Product {$i}",
@@ -41,11 +41,6 @@ function getProducts(): Generator
 }
 
 // Usage
-foreach(getProducts() as $product){
+foreach (getProducts() as $product) {
     echo "{$product['name']} - {$product['category']} - \${$product['price']}" . PHP_EOL;
 }
-
-
-
-
-
