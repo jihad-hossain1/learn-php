@@ -97,3 +97,51 @@ class ProductService
         //
     }
 }
+
+#[Attribute(Attribute::TARGET_PROPERTY)]
+class Required 
+{
+    //
+}
+
+class RequiredTest 
+{
+    #[Required]
+    public string $name;
+
+    #[Required]
+    public string $email;
+
+}
+
+class UController
+{
+    #[Route('/users','GET')]
+    public function index(): void 
+    {
+        echo 'List users';
+    }
+    
+    #[Route('/users','POST')]
+    public function store(): void 
+    {
+        echo 'Create user';
+    }
+
+}
+
+
+$reflection = new ReflectionClass(UController::class);
+
+foreach($reflection->getMethods() as $method){
+    $attributes = $method->getAttributes(Route::class);
+
+    foreach($attributes as $attribute){
+        $route = $attribute->newInstance();
+
+        echo $method->getName() . PHP_EOL;
+        echo $route->method . ' ' . $route->path . PHP_EOL;
+    }
+}
+
+
