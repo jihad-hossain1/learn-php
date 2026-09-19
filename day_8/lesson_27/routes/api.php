@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\SalesCreditNoteController;
+use App\Http\Controllers\AuthController;
 
 // Basic Route define
 
@@ -79,4 +82,31 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 Route::prefix('custom')->name('custom.')->group(function () {
 
     Route::get('/products', [ProductController::class, 'customProducts'])->name('products.custom.customProducts');
+});
+
+
+Route::prefix('sales')->name('sales.')->group(function () {
+    Route::get('/', [SalesController::class, 'index'])->name('sales.index');
+    Route::get('/reports', [SalesController::class, 'reports'])->name('sales.reports');
+    Route::post('/credit-note', [SalesCreditNoteController::class, 'store'])->name('sales.credit.note.store');
+    Route::get('/credit-note', [SalesCreditNoteController::class, 'index'])->name('sales.credit.note.index');
+    Route::get('/{id}', [SalesController::class, 'show'])->name('sales.show');
+    Route::get('/reports/{id}/view', [SalesController::class, 'reportsView'])->name('sales.reports.view');
+});
+
+Route::post('/login', function () {
+    return "login to dash.";
+});
+
+Route::prefix('auth')->name('auth.')->group(function () {
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+});
+
+// Middleware Route define
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/dashboard', function () {
+        return response()->json([
+            'message' => 'Dashboard info here',
+        ]);
+    });
 });
