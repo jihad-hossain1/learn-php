@@ -94,13 +94,10 @@ Route::prefix('sales')->name('sales.')->group(function () {
     Route::get('/reports/{id}/view', [SalesController::class, 'reportsView'])->name('sales.reports.view');
 });
 
-Route::post('/login', function () {
+Route::get('/login', function () {
     return "login to dash.";
-});
+})->name('login');
 
-Route::prefix('auth')->name('auth.')->group(function () {
-    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-});
 
 // Middleware Route define
 Route::middleware('auth:sanctum')->group(function () {
