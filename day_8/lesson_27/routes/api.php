@@ -107,3 +107,9 @@ Route::middleware('auth:sanctum')->group(function () {
         ]);
     });
 });
+
+Route::middleware('logging')->group(function () {
+    Route::get('/customers', function () {
+        return 'customers info here';
+    });
+});
