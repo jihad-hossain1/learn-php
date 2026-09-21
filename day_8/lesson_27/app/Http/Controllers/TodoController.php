@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
+use App\Http\Requests\StoreTodoRequest;
 
 class TodoController extends Controller
 {
@@ -11,5 +12,10 @@ class TodoController extends Controller
         return response()->json([
             'message' => 'Todo list'
         ]);
+    }
+
+    public function store(StoreTodoRequest $request): JsonResponse 
+    {
+        // $request->validate()
     }
 }
