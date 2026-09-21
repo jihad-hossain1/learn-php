@@ -1,11 +1,15 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
-abstract class TodoController
+use Illuminate\Http\JsonResponse;
+
+class TodoController extends Controller
 {
-    public function index(): string 
+    public function index(): JsonResponse
     {
-       return 'client todo retrieve done';
+        return response()->json([
+            'message' => 'Todo list'
+        ]);
     }
 }

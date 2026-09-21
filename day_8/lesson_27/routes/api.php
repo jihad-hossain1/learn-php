@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalesCreditNoteController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TodoController;
 
 // Basic Route define
 
@@ -14,28 +15,26 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/todos', function () {
-    return 'Todo list';
-});
+Route::get('/todos', [TodoController::class, 'index']);
 
 Route::post("/todos", function () {
     return "todo created";
 });
 
 // single parameter route: /todos/123
-Route::get('/todos/{id}', function (int $id) {
+Route::get('/itodos/{id}', function (int $id) {
     return "get todo single id: {$id}";
 })->whereNumber('id');
 
-Route::put('/todos/{id}', function (int $id) {
+Route::put('/itodos/{id}', function (int $id) {
     return "todo updated id: {$id}";
 });
 
-Route::patch('/todos/{todo}', function () {
+Route::patch('/itodos/{todo}', function () {
     return "Todo patch done";
 });
 
-Route::delete('/todos/{todo}', function () {
+Route::delete('/itodos/{todo}', function () {
     return 'todo remove done.';
 });
 
