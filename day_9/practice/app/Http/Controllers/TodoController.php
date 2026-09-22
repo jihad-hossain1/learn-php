@@ -13,10 +13,13 @@ class TodoController extends Controller
         return view('todos.index');
     }
 
-    public function show(Todo $todo): View
+    public function show(): View
     {
         return view('todos.show',[
-            'todo'=> $todo
+            'todo'=> [
+                'id' => 1,
+                'title' => 'abc efx'
+            ]
         ]);
     }
 }
