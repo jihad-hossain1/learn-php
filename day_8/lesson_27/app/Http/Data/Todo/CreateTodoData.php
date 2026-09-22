@@ -1,13 +1,15 @@
-<?php 
+<?php
+
+namespace App\Http\Data\Todo;
 
 use App\Http\Requests\StoreTodoRequest;
 
-readonly class CreateTodoData 
+readonly class CreateTodoData
 {
     public function __construct(
         public string $title,
         public int $userId
-    ){}
+    ) {}
 
     public static function fromRequest(
         StoreTodoRequest $request
@@ -18,5 +20,3 @@ readonly class CreateTodoData
         );
     }
 }
-
-

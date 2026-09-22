@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StoreTodoRequest;
+use App\Http\Data\Todo\CreateTodoData;
+use App\Services\TodoService;
 
 class TodoController extends Controller
 {
+    public function __construct(
+        readonly TodoService $todoService
+    ) {
+        throw new \Exception('Not implemented');
+    }
     public function index(): JsonResponse
     {
         return response()->json([
@@ -14,8 +21,12 @@ class TodoController extends Controller
         ]);
     }
 
-    public function store(StoreTodoRequest $request): JsonResponse 
+    public function store(StoreTodoRequest $request): JsonResponse
     {
-        // $request->validate()
+        $data = CreateTodoData::fromRequest($request);
+
+        $todo = $this->todoService->create($data);
+
+        return response()->json($todo, 201);
     }
 }
