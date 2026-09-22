@@ -17,9 +17,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/todos', [TodoController::class, 'index']);
 
-Route::post("/todos", function () {
-    return "todo created";
-});
+Route::post("/todos", [TodoController::class,'store']);
 
 // single parameter route: /todos/123
 Route::get('/itodos/{id}', function (int $id) {

@@ -11,9 +11,8 @@ class TodoController extends Controller
 {
     public function __construct(
         readonly TodoService $todoService
-    ) {
-        throw new \Exception('Not implemented');
-    }
+    ) {}
+    
     public function index(): JsonResponse
     {
         return response()->json([
