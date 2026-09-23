@@ -7,5 +7,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/todos', [TodoController::class,'index']);
-Route::get('/todos/{todo}',[TodoController::class,'show']);
+Route::get('/todos', function () {
+    return view('todos.index', ['todos' => [
+        [
+            "id" => 1,
+            'name' => 'hocker'
+        ],
+        [
+            'id' => 2,
+            'name' => 'hacker'
+        ]
+    ]]);
+});
+Route::get('/todos/{todo}', [TodoController::class, 'show']);
