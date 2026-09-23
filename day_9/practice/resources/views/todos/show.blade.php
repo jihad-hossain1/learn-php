@@ -1,5 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
+    <title>
+        @yield('title')
+    </title>
+</head>
 
-<h1>
-   hello show
-</h1>
+<body>
+
+    <nav>
+        <a 
+        {{-- href="{{ route('todos.index') }}" --}}
+        >
+            Todos
+        </a>
+    </nav>
+
+    <main>
+        @yield('content')
+    </main>
+
+</body>
+</html>

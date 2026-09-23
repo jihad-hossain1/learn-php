@@ -19,4 +19,14 @@ Route::get('/todos', function () {
         ]
     ]]);
 });
-Route::get('/todos/{todo}', [TodoController::class, 'show']);
+Route::get('/todos/show', function(){
+    return view('todos.show.index');
+});
+
+Route::get('/todos/create',function(){
+    return view('todos.create');
+});
+
+Route::post('/todos/create',function($request){
+    return 'todo created';
+})->name('todos.store');
