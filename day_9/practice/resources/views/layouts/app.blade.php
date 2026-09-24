@@ -14,6 +14,9 @@
         <a href="{{ route('todos.index') }}">
             Todos
         </a>
+        <a href="{{ route('todos.store') }}">
+            Add Todo
+        </a>
     </nav>
 
     <main>

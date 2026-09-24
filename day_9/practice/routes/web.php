@@ -18,15 +18,12 @@ Route::get('/todos', function () {
             'name' => 'hacker'
         ]
     ]]);
-});
-Route::get('/todos/show', function(){
-    return view('todos.show.index');
+})->name('todos.index');
+
+Route::get('/todos/show', function () {
+    return view('todos.show');
 });
 
-Route::get('/todos/create',function(){
+Route::get('/todos/create', function () {
     return view('todos.create');
 });
-
-Route::post('/todos/create',function($request){
-    return 'todo created';
-})->name('todos.store');

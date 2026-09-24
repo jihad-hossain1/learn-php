@@ -17,6 +17,9 @@
             </style>
         @endif
     </head>
-    <body >       
+    <body > 
+        <main class="flex justify-center items-center min-h-[70vh]">
+            <h4 class="text-center">Wellcome to <span class="text-red-600 font-bold">Laravel</span> learning curve</h4> 
+        </main>     
     </body>
 </html>
