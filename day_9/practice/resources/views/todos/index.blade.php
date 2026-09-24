@@ -1,3 +1,10 @@
+@extends('layouts.app')
+
+@section('name','Todos')
+
+@section('content')
+
+
 <h4>Basic Loop:</h4>
 
 @foreach ($todos as $todo)
@@ -22,3 +29,5 @@
 
     <p>{{ $todo['name'] }}</p>
 @endforeach
+
+@endsection
