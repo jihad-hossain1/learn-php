@@ -1,29 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/todos');
 
-Route::get('/todos', function () {
-    return view('todos.index', ['todos' => [
-        [
-            "id" => 1,
-            'name' => 'hocker'
-        ],
-        [
-            'id' => 2,
-            'name' => 'hacker'
-        ]
-    ]]);
-})->name('todos.index');
-
-Route::get('/todos/show', function () {
-    return view('todos.show');
-});
-
-Route::get('/todos/create', function () {
-    return view('todos.create');
+Route::middleware(['todo.activity'])->prefix('todos')->name('todos.')->group(function () {
+    Route::get('/', [TodoController::class, 'index'])->name('index');
+    Route::get('/create', [TodoController::class, 'create'])->name('create');
+    Route::post('/', [TodoController::class, 'store'])->name('store');
+    Route::get('/{id}', [TodoController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [TodoController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [TodoController::class, 'update'])->name('update');
+    Route::patch('/{id}/toggle', [TodoController::class, 'toggle'])->name('toggle');
+    Route::delete('/{id}', [TodoController::class, 'destroy'])->name('destroy');
 });
