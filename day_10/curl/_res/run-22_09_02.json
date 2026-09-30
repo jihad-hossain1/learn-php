@@ -1,0 +1,1 @@
+{"message":"The user email field must be a string. (and 2 more errors)","errors":{"email":["The user email field must be a string.","The user email field must be at least 10 characters."],"password":["The user password field is required."]}}
