@@ -2,39 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\ForgotPasswordRequest;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use Illuminate\Http\JsonResponse;
+use App\Http\Requests\ResetPasswordRequest;
+use App\Http\Requests\VerifyOtpRequest;
 use App\Services\AuthService;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
-
     public function __construct(
         private AuthService $authService
     ) {}
 
     public function register(RegisterRequest $request): JsonResponse
     {
-        $dto = $request->toDTO();
+        $result = $this->authService->register($request->toDTO());
 
-        $register = $this->authService->register($dto);
-
-        return response()->json($register);
+        return response()->json([
+            'success' => $result['success'],
+            'message' => $result['message'],
+            'data' => $result['data'] ?? null,
+        ], $result['status'] ?? 201);
     }
 
-    public function verify(): void
+    public function verify(VerifyOtpRequest $request): JsonResponse
     {
-        //
+        $result = $this->authService->verify($request->toDTO());
+
+        return response()->json([
+            'success' => $result['success'],
+            'message' => $result['message'],
+            'data' => $result['data'] ?? null,
+        ], $result['status'] ?? 200);
     }
 
-    public function login(): void
+    public function login(LoginRequest $request): JsonResponse
     {
-        //
+        $result = $this->authService->login($request->toDTO());
+
+        return response()->json([
+            'success' => $result['success'],
+            'message' => $result['message'],
+            'data' => $result['data'] ?? null,
+        ], $result['status'] ?? 200);
     }
 
-    public function forgotPassword(): void
+    public function forgotPassword(ForgotPasswordRequest $request): JsonResponse
     {
-        //
+        $result = $this->authService->forgotPassword($request->toDTO());
+
+        return response()->json([
+            'success' => $result['success'],
+            'message' => $result['message'],
+            'data' => $result['data'] ?? null,
+        ], $result['status'] ?? 200);
+    }
+
+    public function resetPassword(ResetPasswordRequest $request): JsonResponse
+    {
+        $result = $this->authService->resetPassword($request->toDTO());
+
+        return response()->json([
+            'success' => $result['success'],
+            'message' => $result['message'],
+            'data' => $result['data'] ?? null,
+        ], $result['status'] ?? 200);
     }
 }

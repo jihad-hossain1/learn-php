@@ -1,11 +1,15 @@
 #!/bin/bash
 
-API_URL="http://localhost:8000/api/auth/register"
+API_URL="http://localhost:8000/api/auth/reset-password"
+# API_URL="http://localhost:8000/api/auth/forgot-password"
+# API_URL="http://localhost:8000/api/auth/login"
+# API_URL="http://localhost:8000/api/auth/verify"
+# API_URL="http://localhost:8000/api/auth/register"
 
 read -r -d '' BODY <<EOF
 {
-  "name": "aaa 1",
   "email": "abc2@gmail.com",
+  "otp": "258302",
   "password": "123456"
 }
 EOF

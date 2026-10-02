@@ -2,19 +2,19 @@
 
 namespace App\DTOs;
 
-readonly class AuthRegisterDTO
+readonly class ResetPasswordDTO
 {
     public function __construct(
-        public string $name,
         public string $email,
+        public string $otp,
         public string $password
     ) {}
 
     public static function fromArray(array $data): self
     {
         return new self(
-            name: trim($data['name']),
             email: trim($data['email']),
+            otp: trim($data['otp']),
             password: trim($data['password'])
         );
     }
@@ -22,8 +22,8 @@ readonly class AuthRegisterDTO
     public function toArray(): array
     {
         return [
-            'name' => $this->name,
             'email' => $this->email,
+            'otp' => $this->otp,
             'password' => $this->password,
         ];
     }

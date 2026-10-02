@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\DTOs\AuthRegisterDTO;
+use App\DTOs\ResetPasswordDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class ResetPasswordRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,8 +15,8 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'email' => ['required', 'string', 'email', 'exists:users,email'],
+            'otp' => ['required', 'string', 'digits:6'],
             'password' => ['required', 'string', 'min:6', 'max:100'],
         ];
     }
@@ -24,14 +24,14 @@ class RegisterRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'name' => 'user name',
             'email' => 'user email',
-            'password' => 'user password',
+            'otp' => 'OTP code',
+            'password' => 'new password',
         ];
     }
 
-    public function toDTO(): AuthRegisterDTO
+    public function toDTO(): ResetPasswordDTO
     {
-        return AuthRegisterDTO::fromArray($this->validated());
+        return ResetPasswordDTO::fromArray($this->validated());
     }
 }
