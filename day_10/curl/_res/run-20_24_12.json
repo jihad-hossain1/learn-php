@@ -1,0 +1,7 @@
+{
+  "message": "The selected user email is invalid. (and 1 more error)",
+  "errors": {
+    "email": ["The selected user email is invalid."],
+    "otp": ["The OTP code field is required."]
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "message": "The OTP code field is required.",
+  "errors": { "otp": ["The OTP code field is required."] }
+}
