@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Products</title>
 </head>
 <body>
-    Product page
+    <h1>Products</h1>
+
+    <ul>
+        @forelse ($products as $slug => $product)
+            <li>
+                <a href="/products/{{ $slug }}">{{ $product['name'] }}</a>
+                - ${{ $product['price'] }}
+            </li>
+        @empty
+            <li>No products found.</li>
+        @endforelse
+    </ul>
 </body>
 </html>
