@@ -7,6 +7,7 @@
     <title>{{ $product['name'] }}</title>
 </head>
 <body>
+    
     <h1>{{ $product['name'] }}</h1>
     <p>Slug: {{ $slug }}</p>
     <p>Price: ${{ $product['price'] }}</p>

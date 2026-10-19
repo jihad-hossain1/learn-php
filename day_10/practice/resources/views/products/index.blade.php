@@ -9,9 +9,16 @@
 <body>
     <h1>Products</h1>
 
-    <ul>
+    <form action="" style="max-width: 300px;">
+        <div style="display: grid; gap: 10px;">
+            <label for="search">Write Your Query</label>
+            <input type="search" name="search" id="search">
+        </div>
+    </form>
+
+    <ol>
         @forelse ($products as $slug => $product)
-            <li>
+            <li style="list-style: decimal">
                 <a href="/products/{{ $slug }}">{{ $product['name'] }}</a>
                 - ${{ $product['price'] }}
             </li>
@@ -19,5 +26,6 @@
             <li>No products found.</li>
         @endforelse
     </ul>
+
 </body>
 </html>
