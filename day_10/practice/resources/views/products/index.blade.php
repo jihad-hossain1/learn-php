@@ -9,17 +9,24 @@
 <body>
     <h1>Products</h1>
 
-    <form action="" style="max-width: 300px;">
+    <form 
+    {{-- onsubmit="handleSubmit(event)" --}}
+    action="{{url('/products')}}" 
+    method="GET"
+    style="max-width: 300px;"
+    >
         <div style="display: grid; gap: 10px;">
             <label for="search">Write Your Query</label>
-            <input type="search" name="search" id="search">
+            <input value="{{$search}}" type="search" name="search" id="search">
         </div>
+         <button type="submit">Search</button>
+         <button type="reset" onclick="handleReset()">Reset</button>
     </form>
 
     <ol>
-        @forelse ($products as $slug => $product)
+        @forelse ($products as $product)
             <li style="list-style: decimal">
-                <a href="/products/{{ $slug }}">{{ $product['name'] }}</a>
+                <a href="/products/{{ $product['slug'] }}">{{ $product['name'] }}</a>
                 - ${{ $product['price'] }}
             </li>
         @empty
@@ -27,5 +34,16 @@
         @endforelse
     </ul>
 
+    <script>
+        function handleSubmit(e){
+            e.preventDefault();
+
+            console.log('e',e)
+        }
+
+        function handleReset(){
+            window.location.href = "{{url('/products')}}"
+        }
+    </script>
 </body>
 </html>
