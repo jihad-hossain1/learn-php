@@ -16,12 +16,27 @@ final class ProductService
             'name' => $data->name,
             'price' => $data->price,
             'description' => $data->description,
-            'slug' => $slug
+            'slug' => $slug,
+            'cat_id' => $data->cat_id
         ]);
 
         return [
             'success' => true
         ];
+    }
+
+    public function getBySlug(string $slug)
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+
+        return $product;
+    }
+
+    public function getAll()
+    {
+        $products = Product::all();
+
+        return $products;
     }
 
     private function generateSlug(string $name): string

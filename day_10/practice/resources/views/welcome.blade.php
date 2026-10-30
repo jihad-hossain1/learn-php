@@ -21,6 +21,7 @@
        <nav class="flex item-center justify-center gap-4">
         <a href="/" wire:navigate class="">Home</a>
         <a href="/products" wire:navigate>Products</a>
+        <a href="/lookups" wire:navigate>Lookups</a>
         <a href="/about" wire:navigate>About</a>
        </nav>
        <div class="min-h-[60vh] flex items-center justify-center">

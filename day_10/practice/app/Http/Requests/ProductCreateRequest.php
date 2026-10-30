@@ -18,7 +18,8 @@ class ProductCreateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:5', 'max:255'],
             'price' => ['required', 'int'],
-            'description' => ['string', 'max:500']
+            'description' => ['string', 'max:500'],
+            'cat_id' => ['required', 'int']
         ];
     }
 
@@ -27,6 +28,7 @@ class ProductCreateRequest extends FormRequest
         return [
             'name' => 'product name',
             'price' => 'product price',
+            'cat_id' => 'product category',
             'description' => 'product description'
         ];
     }
