@@ -23,6 +23,8 @@
          <button type="reset" onclick="handleReset()">Reset</button>
     </form>
 
+    <a href="/products/new">Add Product </a>
+
     <ol>
         @forelse ($products as $product)
             <li style="list-style: decimal">

@@ -2,10 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/products', function (Request $request) {
     $search = trim($request->query('search', ''));
 
@@ -20,11 +22,20 @@ Route::get('/products', function (Request $request) {
         ['slug' => 'nokia-e71', 'name' => 'Nokia E71', 'price' => 599, 'description' => 'Nokia Symbion button smartphone'],
         ['slug' => 'nokia-6600', 'name' => 'Nokia 6600', 'price' => 399, 'description' => 'Nokia Symbion button smartphone'],
     ];
+
     return view('products.index', [
         'products' => $products,
         'search' => $search
     ]);
 });
+
+Route::post('/products', [ProductController::class, 'store']);
+
+
+Route::get("/products/new", function () {
+    return view("products.new");
+});
+
 Route::get('/products/{slug}', function (string $slug) {
     // Temporary sample data until there is a Product model + database table
     $products = [

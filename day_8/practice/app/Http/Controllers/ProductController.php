@@ -19,4 +19,6 @@ class ProductController extends Controller
     {
         return "admin product list";
     }
+
+    public function store() {}
 }
