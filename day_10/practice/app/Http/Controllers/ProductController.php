@@ -24,6 +24,8 @@ class ProductController extends Controller
             'products' => $products,
             'search' => $search
         ]);
+
+        // return response()->json($products);
     }
 
     public function newform()
@@ -50,7 +52,19 @@ class ProductController extends Controller
 
         return view('products.view', [
             'slug' => $slug,
+            'product' => $result
+        ]);
+    }
+
+    public function update(string $slug)
+    {
+        $result = $this->productService->getBySlug($slug);
+        $codes = $this->codeService->getByType('product');
+
+        return view('products.update', [
+            'slug' => $slug,
             'product' => $result,
+            'codes' => $codes
         ]);
     }
 }

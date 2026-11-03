@@ -34,9 +34,7 @@ final class ProductService
 
     public function getAll()
     {
-        $products = Product::all();
-
-        return $products;
+        return Product::with('code')->get();
     }
 
     private function generateSlug(string $name): string

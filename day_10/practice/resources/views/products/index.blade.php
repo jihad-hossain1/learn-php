@@ -185,7 +185,7 @@
                 @forelse ($products as $product)
                     <li>
                         <a href="/products/{{ $product['slug'] }}">{{ $product['name'] }}</a> 
-                        - <strong>${{$product['price']}}</strong>
+                        - <strong>${{$product['price']}}</strong> - <span style="font-size: 10px;"> {{$product['category']}} </span> <a href="/products/update/{{$product['slug']}}"> edit </a>
                     </li>
                 @empty
                     <li class="empty-state">No products found.</li>
