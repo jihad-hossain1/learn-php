@@ -10,7 +10,8 @@ Route::get('/', fn() => view('welcome'));
 Route::get('/products', [ProductController::class, 'index']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::get("/products/new", [ProductController::class, 'newform']);
-Route::get('/products/update/{slug}', [ProductController::class, 'update']);
+Route::put('/products/update', [ProductController::class, 'update']);
+Route::get('/products/update/{slug}', [ProductController::class, 'updatePage']);
 Route::get('/products/{slug}', [ProductController::class, 'show']);
 
 Route::get('/lookups', [CodeController::class, 'index']);

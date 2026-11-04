@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
 use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Services\CodeService;
 
 class ProductController extends Controller
@@ -56,7 +57,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(string $slug)
+    public function updatePage(string $slug)
     {
         $result = $this->productService->getBySlug($slug);
         $codes = $this->codeService->getByType('product');
@@ -66,5 +67,10 @@ class ProductController extends Controller
             'product' => $result,
             'codes' => $codes
         ]);
+    }
+
+    public function update(ProductUpdateRequest $request)
+    {
+        $result = $this->productService->update($request->toDTO());
     }
 }

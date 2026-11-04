@@ -136,9 +136,11 @@
         <div class="card">
             <h4>Edit Product</h4>
             
-            <form id="updateProductForm" action="{{ url('/products/' . $product->id) }}" method="POST" class="form-grid">
+            <form id="updateProductForm" action="{{ url('/products/update' . $product->id) }}" method="POST" class="form-grid">
                 @csrf
                 @method('PUT')
+
+                <input name='slug' id="slug" style="display: none" value="{{old('slug',$product->slug)}}" >
                 
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -192,7 +194,7 @@
             .then(data => {
                 console.log('Success:', data);
                 alert('Product updated successfully!');
-                window.location.href = "{{ url('/products/' . $product->slug) }}";
+                window.location.href = "{{ url('/products') }}";
             })
             .catch(error => {
                 console.error('Error:', error);
